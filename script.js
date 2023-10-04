@@ -31,12 +31,19 @@ console.log(firLasName);
 
 // Array.prototype.sort()
 // 3. Sort the inventors by birth date (year property), in ascending order
+const sortedInventors = inventors.sort((a, b) => a.year - b.year);
+console.log(sortedInventors);
 
 // Array.prototype.find()
 // 4. Find the inventor object with the first name of 'Ada'
-
+console.log(inventors.find((name) => name.first === "Ada"));
 // Array.prototype.reduce()
 // 5. How many years did all the inventors live?
+const totalYears = inventors.reduce((acc, num) => {
+  acc = acc + num.passed - num.year;
+  return acc;
+}, 0);
+console.log(totalYears);
 
 const people = [
   "Becker, Carl",
@@ -84,6 +91,13 @@ const people = [
 // Array.prototype.map()
 // 6. Map the people array such that the new array consists of strings with the names formatted as "First Last", e.g., "Becker, Carl" should be mapped to "Carl Becker".
 // Hint: As a start, consider using the String.prototype.split method to "split" the string using ', ' as the separator
+
+const newPeople = people.map((person) => {
+  const word = person.split(",");
+  const newWord = `${word[1]} ${word[0]}`;
+  return newWord;
+});
+console.log(newPeople);
 
 const data = [
   "car",
