@@ -119,6 +119,16 @@ const data = [
 // Array.prototype.reduce()
 // 7. Count the number of instances for each of the data items. The reduce should return an object where the keys are 'car', 'truck', etc. and the values are the count.
 // Hint: Since you want to return an object, be sure to pass an empty {} for the initial value of the "accumulator".
+const newData = data.reduce((acc, curr) => {
+  if (acc[curr]) {
+    acc[curr] += 1;
+  } else {
+    acc[curr] = 1;
+  }
+  return acc;
+}, {});
+
+console.log(newData);
 
 const devs = [
   { name: "Wes", year: 1988 },
@@ -130,9 +140,18 @@ const devs = [
 // Array.prototype.some()
 // 8. Check if at least one person is 19 or older?
 // Hint: To get today's year, use the getFullYear method of new Date(), i.e., new Date().getFullYear()
-
+const older19 = devs.some((dev) => {
+  const theDate = new Date().getFullYear();
+  if (theDate - dev.year > 18) {
+    return true;
+  }
+});
+console.log(older19);
 // Array.prototype.every()
 // 9. Check if everyone is 19 or older?
+
+const everyDev = devs.every((dev) => new Date().getFullYear() - dev.year > 18);
+console.log(everyDev);
 
 const comments = [
   { text: "Love this!", id: 523423 },
@@ -144,6 +163,9 @@ const comments = [
 
 // Array.prototype.find()
 // 10. Find the comment with the id of 823423
-
+const findId = comments.find((comment) => comment.id === 823423);
+console.log(findId);
 // Array.prototype.findIndex()
 // 11. Find the index of the comment with an id of 123523
+const findIdx = comments.findIndex((comment) => comment.id === 123523);
+console.log(findIdx);
